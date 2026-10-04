@@ -1,0 +1,16 @@
+server {
+    listen 80;
+    server_name _;
+
+    # Trỏ root về thư mục /opt/
+    root /opt/my-app/html;
+    index index.html;
+
+    # Cấu hình lưu trữ logs tại thư mục /opt/my-app/logs/
+    access_log /opt/my-app/logs/access.log;
+    error_log /opt/my-app/logs/error.log;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
